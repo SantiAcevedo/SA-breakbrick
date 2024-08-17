@@ -6,6 +6,11 @@ export default class HelloWorldScene extends Phaser.Scene {
   }
 
   create() {
+
+    // Agregar el fondo y ajustar su escala
+    this.background = this.add.image(400, 300, 'sky');
+    this.background.setScale(1.3);
+
     // Inicializar el puntaje
     this.score = 0;
 
