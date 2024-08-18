@@ -1,8 +1,8 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class HelloWorldScene extends Phaser.Scene {
+export default class GameScene extends Phaser.Scene {
   constructor() {
-    super("hello-world");
+    super("game");
   }
 
   create() {
@@ -69,11 +69,15 @@ export default class HelloWorldScene extends Phaser.Scene {
   }
 
   update() {
-    if (this.cursor.right.isDown) {
-      this.paddle.x += 10;
-    } else if (this.cursor.left.isDown) {
-      this.paddle.x -= 10;
-    }
+      // Mover la pala con el cursor del mouse
+      this.paddle.x = this.input.activePointer.x;
+  
+      // Asegurarse de que la pala no se salga de los límites
+      if (this.paddle.x < this.paddle.width / 2) {
+          this.paddle.x = this.paddle.width / 2;
+      } else if (this.paddle.x > this.scale.width - this.paddle.width / 2) {
+          this.paddle.x = this.scale.width - this.paddle.width / 2;
+      }
   }
 
   handleCollision(obstacle, ball) {

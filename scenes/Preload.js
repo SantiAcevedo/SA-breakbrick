@@ -10,7 +10,7 @@ export default class Preload extends Phaser.Scene {
 
     create() {
         // Ir a la escena principal (HelloWorldScene) después de cargar
-        this.scene.start('hello-world');
+        this.scene.start('game');
       }
 
 }
